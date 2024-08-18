@@ -1,7 +1,11 @@
-import {Text, View} from "react-native";
+import { Text, View } from 'react-native'
 
 const App = () => {
-    return <View><Text>testing</Text></View>
- }
+  return (
+    <View>
+      <Text>testing</Text>
+    </View>
+  )
+}
 
- export default App
+export default App
