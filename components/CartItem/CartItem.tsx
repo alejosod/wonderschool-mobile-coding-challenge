@@ -39,6 +39,7 @@ export const CartItem = (props: CartItemProps) => {
       <MinusIconButton onPress={onMinusPress} />
       <Text style={{ marginHorizontal: 5 }}>{itemsNumber}</Text>
       <PlusIconButton onPress={onPlusPress} />
+      <Text style={{ marginRight: 'auto', marginLeft: 'auto' }}>{`$${price * itemsNumber}`}</Text>
     </View>
   )
 }
