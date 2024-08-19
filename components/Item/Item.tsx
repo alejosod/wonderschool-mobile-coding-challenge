@@ -2,7 +2,6 @@ import { Text, View } from 'react-native'
 import { ItemStyles } from '@/components/Item/Item.styles'
 
 interface ItemProps {
-  id: string
   name: string
   price: number
 }
