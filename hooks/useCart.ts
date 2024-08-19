@@ -3,7 +3,7 @@ import { CartContext } from '@/contexts/CartContext'
 import { MenuItem } from '@/types/MenuItem'
 
 export const useCart = () => {
-  const { addItem } = useContext(CartContext)
+  const { addItem, items } = useContext(CartContext)
 
   const addItemToCart = (id: string, item: MenuItem) => {
     addItem(id, item)
@@ -11,5 +11,6 @@ export const useCart = () => {
 
   return {
     addItemToCart,
+    items: Object.values(items),
   }
 }
