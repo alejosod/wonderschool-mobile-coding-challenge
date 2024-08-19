@@ -22,5 +22,10 @@ export default function RootLayout() {
     return null
   }
 
-  return <Stack />
+  return (
+    <Stack>
+      <Stack.Screen name={'Menu'} />
+      <Stack.Screen name={'Cart'} />
+    </Stack>
+  )
 }

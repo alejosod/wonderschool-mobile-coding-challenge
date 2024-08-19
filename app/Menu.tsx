@@ -1,13 +1,14 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { MenuItem } from '@/components/MenuItem/MenuItem'
+import { MenuHeader } from '@/components/MenuHeader/MenuHeader'
 
-const App = () => {
+const Menu = () => {
   return (
     <View>
-      <Text>testing</Text>
+      <MenuHeader />
       <MenuItem id={'testing'} name={'testing'} price={5.99} />
     </View>
   )
 }
 
-export default App
+export default Menu
