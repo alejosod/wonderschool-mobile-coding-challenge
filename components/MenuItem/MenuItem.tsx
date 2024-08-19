@@ -2,7 +2,8 @@ import { View } from 'react-native'
 import { Item } from '@/components/Item/Item'
 import { MenuItem as MenuItemType } from '@/types/MenuItem'
 import { PlusIconButton } from '@/components/PlusIcon/PlusIcon'
-import { useCart } from '@/hooks/useCart'
+import { useCartItem } from '@/hooks/useCartItem'
+import { useAlert } from '@/hooks/useAlert'
 
 interface MenuItemProps {
   id: string
@@ -12,7 +13,8 @@ interface MenuItemProps {
 
 export const MenuItem = (props: MenuItemProps) => {
   const { id, name, price } = props
-  const { addItemToCart } = useCart()
+  const { addItemToCart } = useCartItem(id)
+  const { alert } = useAlert(`${name} added`)
 
   const onPress = () => {
     const item: MenuItemType = {
@@ -22,10 +24,19 @@ export const MenuItem = (props: MenuItemProps) => {
     }
 
     addItemToCart(id, item)
+    alert()
   }
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View
+      style={{
+        marginBottom: 10,
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
       <Item name={name} price={price} />
       <PlusIconButton onPress={onPress} />
     </View>

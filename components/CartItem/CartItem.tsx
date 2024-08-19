@@ -34,12 +34,31 @@ export const CartItem = (props: CartItemProps) => {
         borderBottomColor: `rgba(00,00,00,.1)`,
       }}
     >
-      <Text style={{ marginRight: 'auto' }}>{name}</Text>
-      <Text style={{ marginRight: 'auto' }}>{`$${price} x`}</Text>
-      <MinusIconButton onPress={onMinusPress} />
-      <Text style={{ marginHorizontal: 5 }}>{itemsNumber}</Text>
-      <PlusIconButton onPress={onPlusPress} />
-      <Text style={{ marginRight: 'auto', marginLeft: 'auto' }}>{`$${price * itemsNumber}`}</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          flex: 1,
+          marginRight: 10,
+        }}
+      >
+        <Text>{name}</Text>
+        <Text style={{ marginLeft: 'auto' }}>{`$${price} x`}</Text>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginLeft: 'auto',
+        }}
+      >
+        <MinusIconButton onPress={onMinusPress} />
+        <Text style={{ marginHorizontal: 5 }}>{itemsNumber}</Text>
+        <PlusIconButton onPress={onPlusPress} />
+        <Text
+          style={{ marginRight: 10, marginLeft: 10 }}
+        >{`$${(price * itemsNumber).toFixed(2)}`}</Text>
+      </View>
     </View>
   )
 }

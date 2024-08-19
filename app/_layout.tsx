@@ -4,6 +4,8 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import 'react-native-reanimated'
 import { CartContextProvider } from '@/contexts/CartContext'
+import { AlertContextProvider } from '@/contexts/AlertContext'
+import { RootSiblingParent } from 'react-native-root-siblings'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -24,11 +26,14 @@ export default function RootLayout() {
   }
 
   return (
-    <CartContextProvider>
-      <Stack>
-        <Stack.Screen name={'Menu'} />
-        <Stack.Screen name={'Cart'} />
-      </Stack>
-    </CartContextProvider>
+    <RootSiblingParent>
+      <AlertContextProvider>
+        <CartContextProvider>
+          <Stack>
+            <Stack.Screen name={'Cart'} />
+          </Stack>
+        </CartContextProvider>
+      </AlertContextProvider>
+    </RootSiblingParent>
   )
 }

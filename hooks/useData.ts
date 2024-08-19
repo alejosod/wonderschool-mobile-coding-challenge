@@ -4,7 +4,10 @@ import { MenuItem } from '@/types/MenuItem'
 import { MenuResponseToMenusItem } from '@/utils/MenuResponseToMenusItem'
 
 // hook to emulate fetching data and some util states.
-export const useData = () => {
+export const useData = (): [
+  MenuItem[],
+  { loading: boolean; error: string | null; completed: boolean },
+] => {
   const [data, setData] = useState<MenuItem[]>([])
   const [loading, setLoading] = useState(false)
   const [error] = useState<string | null>(null)
@@ -14,7 +17,7 @@ export const useData = () => {
     ;(async () => {
       setLoading(true)
       const newSanitizedData = menuItems.map(MenuResponseToMenusItem)
-      setData(newSanitizedData)
+      setData(newSanitizedData as MenuItem[])
       setLoading(false)
       setCompleted(true)
     })()
